@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Sparkles, Brain, PenTool, Film } from 'lucide-react';
+import { Sparkles, Brain, PenTool, Film, Figma, Framer, Github, Atom, Wind, Database } from 'lucide-react';
 
 const traits = [
   { icon: Brain, label: 'AI Curiosity' },
@@ -8,9 +8,20 @@ const traits = [
   { icon: Film, label: 'Story Sense' },
 ];
 
+const tools = [
+  { icon: Figma, name: 'Figma' },
+  { icon: Framer, name: 'Framer' },
+  { icon: Github, name: 'GitHub' },
+  { icon: Atom, name: 'React' },
+  { icon: Wind, name: 'Tailwind' },
+  { icon: Database, name: 'MongoDB' },
+  { icon: Sparkles, name: 'AI' },
+];
+
 const About = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-20% 0px' });
+  const marqueeRef = useRef(null);
 
   useEffect(() => {
     const section = ref.current;
@@ -23,6 +34,22 @@ const About = () => {
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Simple JS marquee for tools strip
+  useEffect(() => {
+    const el = marqueeRef.current;
+    if (!el) return;
+    let raf;
+    let pos = 0;
+    const loop = () => {
+      pos += 0.5; // px per frame
+      el.scrollLeft = pos;
+      if (pos >= el.scrollWidth / 2) pos = 0; // seamless loop with duplicated content
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   return (
@@ -83,6 +110,7 @@ const About = () => {
               <div
                 key={label}
                 className="group relative inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur transition hover:bg-white/10"
+                data-magnetic="true"
               >
                 <Icon className="h-4 w-4" />
                 <span>{label}</span>
@@ -110,6 +138,29 @@ const About = () => {
               </span>
             ))}
           </motion.div>
+        </div>
+      </div>
+
+      {/* Tech & Tools carousel */}
+      <div className="mx-auto mt-2 w-full max-w-7xl px-6 pb-20 md:px-10">
+        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
+          <div className="mb-3 flex items-center justify-between px-1">
+            <span className="text-sm uppercase tracking-widest text-white/60">Tech & Tools</span>
+            <span className="text-xs text-white/40">hover to pause</span>
+          </div>
+          <div ref={marqueeRef} className="no-scrollbar flex gap-4 overflow-x-scroll [scrollbar-width:none]" style={{ scrollBehavior: 'auto' }}>
+            {/* duplicate row for seamless loop */}
+            {[0, 1].map((d) => (
+              <div key={d} className="flex min-w-max items-center gap-4 pr-4">
+                {tools.map(({ icon: Icon, name }) => (
+                  <div key={`${name}-${d}`} className="group/m tool-item relative flex items-center gap-2 rounded-xl border border-white/10 bg-black/30 px-4 py-2 text-sm text-white/80 transition hover:bg-white/10" data-magnetic="true">
+                    <Icon className="h-4 w-4" />
+                    <span>{name}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

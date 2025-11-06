@@ -36,13 +36,14 @@ const Projects = () => {
         </p>
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((p, idx) => (
+          {projects.map((p) => (
             <div
               key={p.title}
               onClick={() => setActive(p)}
               {...tilt}
               className="group relative cursor-pointer rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition will-change-transform"
               style={{ transformStyle: 'preserve-3d' }}
+              data-magnetic="true"
             >
               <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-400/10 to-violet-400/10 opacity-0 transition group-hover:opacity-100" />
               <div className="relative">
@@ -81,12 +82,13 @@ const Projects = () => {
                 <button
                   onClick={() => setActive(null)}
                   className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/80 hover:bg-white/10"
+                  data-magnetic="true"
                 >
                   Close
                 </button>
               </div>
               <div className="grid grid-cols-1 gap-6 p-6 md:grid-cols-2">
-                <div className="aspect-video w-full overflow-hidden rounded-xl bg-gradient-to-br from-cyan-500/10 to-violet-500/10" />
+                <div className="aspect-video w.full overflow-hidden rounded-xl bg-gradient-to-br from-cyan-500/10 to-violet-500/10" />
                 <div className="space-y-3 text-sm text-white/70">
                   <p>
                     A cinematic case study with flows, insights and outcomes. Visuals and diagrams showcase the system thinking behind the product.

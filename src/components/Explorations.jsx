@@ -17,8 +17,8 @@ const Explorations = () => {
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-          {videos.map((v, i) => (
-            <motion.div key={v.id} whileHover={{ scale: 1.01 }} className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+          {videos.map((v) => (
+            <motion.div key={v.id} whileHover={{ scale: 1.01 }} className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5" data-magnetic="true">
               <video
                 src={v.src}
                 className="h-64 w-full object-cover"

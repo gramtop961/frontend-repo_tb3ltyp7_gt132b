@@ -47,6 +47,7 @@ const Contact = () => {
                 whileTap={{ scale: 0.98 }}
                 className="group rounded-full border border-cyan-400/30 bg-cyan-500/10 px-6 py-3 text-sm font-medium text-cyan-200 shadow-[0_0_40px_rgba(34,211,238,0.25)] transition hover:bg-cyan-500/20"
                 type="button"
+                data-magnetic="true"
               >
                 Send Message
               </motion.button>
@@ -54,9 +55,9 @@ const Contact = () => {
           </form>
 
           <div className="mt-8 flex items-center justify-center gap-4">
-            <a className="rounded-full border border-white/10 bg-white/5 p-2 text-white/70 transition hover:bg-white/10" href="#" aria-label="GitHub"><Github className="h-5 w-5" /></a>
-            <a className="rounded-full border border-white/10 bg-white/5 p-2 text-white/70 transition hover:bg-white/10" href="#" aria-label="LinkedIn"><Linkedin className="h-5 w-5" /></a>
-            <a className="rounded-full border border-white/10 bg-white/5 p-2 text-white/70 transition hover:bg-white/10" href="#" aria-label="Instagram"><Instagram className="h-5 w-5" /></a>
+            <a className="rounded-full border border-white/10 bg-white/5 p-2 text-white/70 transition hover:bg-white/10" href="#" aria-label="GitHub" data-magnetic="true"><Github className="h-5 w-5" /></a>
+            <a className="rounded-full border border-white/10 bg-white/5 p-2 text-white/70 transition hover:bg-white/10" href="#" aria-label="LinkedIn" data-magnetic="true"><Linkedin className="h-5 w-5" /></a>
+            <a className="rounded-full border border-white/10 bg-white/5 p-2 text-white/70 transition hover:bg-white/10" href="#" aria-label="Instagram" data-magnetic="true"><Instagram className="h-5 w-5" /></a>
           </div>
         </div>
 

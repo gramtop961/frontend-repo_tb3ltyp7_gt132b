@@ -106,6 +106,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
           className="group mt-10 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-white backdrop-blur-md transition hover:bg-white/10"
+          data-magnetic="true"
         >
           <span className="text-sm font-medium">Explore My World</span>
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
